@@ -1,4 +1,5 @@
 # Process this file with autoconf to produce a configure script.
+AC_PREREQ(2.61)
 AC_INIT(nocat, [0.92], [schuyler@nocat.net], [NoCatSplash])
 AC_CONFIG_SRCDIR([src/http.c])
 AM_CONFIG_HEADER(src/config.h)
@@ -13,7 +14,8 @@ AC_PROG_RANLIB
 # Checks for libraries.
 # FIXME: Replace `main' with a function in `-lsplash':
 # AC_CHECK_LIB([splash], [http_request_new])
-AM_PATH_GLIB( 1.2.0, :, AC_MSG_ERROR([You must have glib-1.2 installed.]), : )
+
+PKG_CHECK_MODULES([GLIB], [glib-2.0 >= 2.28])
 
 # Checks for header files.
 AC_HEADER_STDC
